@@ -60,7 +60,8 @@
 
   For an example implementation see the [Überauth Example](https://github.com/ueberauth/ueberauth_example) application.
 
-    ## Calling
+
+## Calling
 
     Depending on the configured url you can initial the request through:
 

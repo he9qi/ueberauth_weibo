@@ -43,10 +43,9 @@ defmodule Ueberauth.Strategy.Weibo.OAuth do
   end
 
   @doc """
-  Calls OAuth2 Client to get access token. Since weibo returns body as string:
-  :body=>"{\"access_token\":\"2.xxx\",\"expires_in\":86400,\"uid\":\"12345\"}",
-  request does not parse correctly. As a result, a temp fix is to build a new
-  access token using decoded dict.
+  Calls OAuth2 Client to get access token. Weibo requires Content-Type header as 'x-www-form-urlencoded'
+  while returns body as JSON string: :body=>"{\"access_token\":\"2.xxx\",\"expires_in\":86400,\"uid\":\"12345\"}".
+  As a result, response cannot not be parsed correctly. A temp fix is to build a new access token using decoded dict.
   """
   def get_token!(params \\ [], options \\ %{}) do
     headers = Dict.get(options, :headers, [])

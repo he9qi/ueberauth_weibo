@@ -49,6 +49,6 @@ defmodule UeberauthWeibo.Mixfile do
     [files: ["lib", "mix.exs", "README.md", "LICENSE"],
       maintainers: ["Qi He"],
       licenses: ["MIT"],
-      links: %{"Weibo": "https://github.com/he9qi/ueberauth_weibo"}]
+      links: %{"Github": "https://github.com/he9qi/ueberauth_weibo"}]
   end
 end

@@ -42,11 +42,26 @@ defmodule Ueberauth.Strategy.Weibo.OAuth do
     |> OAuth2.Client.authorize_url!(params)
   end
 
+  @doc """
+  Calls OAuth2 Client to get access token. Since weibo returns body as string:
+  :body=>"{\"access_token\":\"2.xxx\",\"expires_in\":86400,\"uid\":\"12345\"}",
+  request does not parse correctly. As a result, a temp fix is to build a new
+  access token using decoded dict.
+  """
   def get_token!(params \\ [], options \\ %{}) do
     headers = Dict.get(options, :headers, [])
     options = Dict.get(options, :options, [])
-    client_options = Dict.get(options, :client_options, [])
-    OAuth2.Client.get_token!(client(client_options), params, headers, options)
+
+    token = options
+      |> Dict.get(:client_options, [])
+      |> client
+      |> OAuth2.Client.get_token!(params, headers, options)
+
+    token.other_params
+      |> Map.keys
+      |> List.first
+      |> Poison.decode!
+      |> OAuth2.AccessToken.new(token.client)
   end
 
   # Strategy Callbacks

@@ -138,23 +138,23 @@ defmodule Ueberauth.Strategy.Weibo do
       nickname: user["screen_name"],
       location: user["location"],
       description: user["description"],
-      image: user_image(conn),
+      image: image_url(conn),
       urls: %{
         blog: user["url"],
-        weibo: user_weibo(conn)
+        weibo: weibo_url(conn)
       }
     }
   end
 
-  def user_weibo(conn) do
-    user   = conn.private.weibo_user
+  defp weibo_url(conn) do
+    user = conn.private.weibo_user
+    domain = user["domain"]
+    uid = user["idstr"]
 
-    domain = user['domain']
-    uid    = user['idstr']
-    if user['domain'], do: "http://weibo.com/#{domain}", else: "http://weibo.com/u/#{uid}"
+    if domain, do: "http://weibo.com/#{domain}", else: "http://weibo.com/u/#{uid}"
   end
 
-  def user_image(conn) do
+  defp image_url(conn) do
     user = conn.private.weibo_user
 
     user["avatar_hd"] || user["avatar_large"] || user["profile_image_url"]
@@ -174,9 +174,10 @@ defmodule Ueberauth.Strategy.Weibo do
 
   defp fetch_user(conn, token) do
     conn = put_private(conn, :weibo_token, token)
-    uid = uid(conn)
+    uid = token.other_params["uid"]
     access_token = token.access_token
-    fetch_user_url = "/user/2/users/show.json?uid=#{uid}&access_token=#{access_token}"
+    fetch_user_url = "/2/users/show.json?uid=#{uid}&access_token=#{access_token}"
+
     case OAuth2.AccessToken.get(token, fetch_user_url) do
       { :ok, %OAuth2.Response{status_code: 401, body: _body}} ->
         set_errors!(conn, [error("token", "unauthorized")])

@@ -34,11 +34,7 @@ defmodule UeberauthWeibo.Mixfile do
   end
 
   defp docs do
-    [extras: docs_extras, main: "extra-readme"]
-  end
-
-  defp docs_extras do
-    ["README.md"]
+    [extras: ["README.md"], main: "readme"]
   end
 
   defp description do

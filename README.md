@@ -1,5 +1,14 @@
 # Überauth Weibo
 
+[![Build Status][travis-img]][travis] [![Hex Version][hex-img]][hex] [![License][license-img]][license]
+
+[travis-img]: https://travis-ci.org/he9qi/ueberauth_weibo.png?branch=master
+[travis]: https://travis-ci.org/he9qi/ueberauth_weibo
+[hex-img]: https://img.shields.io/hexpm/v/ueberauth_weibo.svg
+[hex]: https://hex.pm/packages/ueberauth_weibo
+[license-img]: http://img.shields.io/badge/license-MIT-brightgreen.svg
+[license]: http://opensource.org/licenses/MIT
+
 > Weibo OAuth2 strategy for Überauth.
 
 ## Installation

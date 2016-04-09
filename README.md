@@ -2,7 +2,7 @@
 
 [![Build Status][travis-img]][travis] [![Hex Version][hex-img]][hex] [![License][license-img]][license]
 
-[travis-img]: https://travis-ci.org/he9qi/ueberauth_weibo.png?branch=master
+[travis-img]: https://travis-ci.org/he9qi/ueberauth_weibo.svg?branch=master
 [travis]: https://travis-ci.org/he9qi/ueberauth_weibo
 [hex-img]: https://img.shields.io/hexpm/v/ueberauth_weibo.svg
 [hex]: https://hex.pm/packages/ueberauth_weibo

@@ -56,12 +56,18 @@ defmodule Ueberauth.Strategy.Weibo.OAuth do
       |> client
       |> OAuth2.Client.get_token!(params, headers, options)
 
+    token
+      |> get_access_token(token.access_token)
+  end
+
+  def get_access_token(token, nil) do
     token.other_params
       |> Map.keys
       |> List.first
       |> Poison.decode!
       |> OAuth2.AccessToken.new(token.client)
   end
+  def get_access_token(token, _), do: token
 
   # Strategy Callbacks
 

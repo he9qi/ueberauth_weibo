@@ -1,5 +1,6 @@
 defmodule Ueberauth.Strategy.WeiboTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: false
+  use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
 
   use Plug.Test
   doctest Ueberauth.Strategy.Weibo
@@ -17,15 +18,26 @@ defmodule Ueberauth.Strategy.WeiboTest do
 
 
   test "default callback phase" do
-    # query = %{ code: "code_abc" } |> URI.encode_query
-    #
-    # conn = :get
-    #        |> conn("/auth/weibo/callback?#{query}")
-    #        |> SpecRouter.call(@router)
-    #
-    # assert conn.resp_body == "weibo callback"
-    #
-    # TODO: test weibo API get access token and user info
+    query = %{ code: "code_abc" } |> URI.encode_query
+
+    use_cassette "httpoison_get" do
+      conn = :get
+             |> conn("/auth/weibo/callback?#{query}")
+             |> SpecRouter.call(@router)
+
+      assert conn.resp_body == "weibo callback"
+
+      auth = conn.assigns.ueberauth_auth
+
+      assert auth.provider == :weibo
+      assert auth.strategy == Ueberauth.Strategy.Weibo
+      assert auth.uid == "12345"
+
+      info = auth.info
+
+      assert info.name == "zaku"
+      assert info.nickname == "zaku"
+    end
   end
 
   import Ueberauth.Strategy.Weibo

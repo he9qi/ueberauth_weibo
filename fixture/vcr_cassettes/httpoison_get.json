@@ -1,0 +1,62 @@
+[
+  {
+    "request": {
+      "body": "client_id=appid&client_secret=secret&code=code_abc&grant_type=authorization_code&redirect_uri=%2Fcallback",
+      "headers": {
+        "Accept": "application/x-www-form-urlencoded",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.weibo.com/oauth2/access_token"
+    },
+    "response": {
+      "body": "{\"access_token\":\"2.xxx\",\"expires_in\":86400,\"uid\":\"12345\"}",
+      "headers": {
+        "Server": "nginx/1.6.1",
+        "Date": "Sat, 09 Apr 2016 04:05:30 GMT",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Pragma": "No-cache",
+        "Cache-Control": "no-cache",
+        "Expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "Api-Server-IP": "10.75.25.86",
+        "SINA-LB": "aGEuMTY5LmcxLmh5ZHMubGIuc2luYW5vZGUuY29t",
+        "SINA-TS": "NGI2ZWMzNjggMCAzNiAzNiA1IDYwCg=="
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  },
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept": "application/json",
+        "Authorization": "Bearer 2.xxx"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.weibo.com/2/users/show.json?uid=12345&access_token=2.xxx"
+    },
+    "response": {
+      "body": "{\"id\": 12345, \"idstr\": \"12345\", \"screen_name\": \"zaku\",  \"name\": \"zaku\"}",
+      "headers": {
+        "Server": "nginx/1.6.1",
+        "Date": "Sat, 09 Apr 2016 04:05:30 GMT",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Pragma": "No-cache",
+        "Cache-Control": "no-cache",
+        "Expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "Api-Server-IP": "10.75.25.86",
+        "SINA-LB": "aGEuMTY5LmcxLmh5ZHMubGIuc2luYW5vZGUuY29t",
+        "SINA-TS": "NGI2ZWMzNjggMCAzNiAzNiA1IDYwCg=="
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

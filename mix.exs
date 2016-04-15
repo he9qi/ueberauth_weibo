@@ -1,7 +1,7 @@
 defmodule UeberauthWeibo.Mixfile do
   use Mix.Project
 
-  @version "0.0.2"
+  @version "0.0.3"
 
   def project do
     [app: :ueberauth_weibo,
@@ -29,7 +29,7 @@ defmodule UeberauthWeibo.Mixfile do
      {:oauth2, "~> 0.5"},
 
      {:exvcr, "~> 0.7", only: :test},
-     
+
      # docs dependencies
      {:earmark, "~>0.1", only: :dev},
      {:ex_doc, "~>0.1", only: :dev}]

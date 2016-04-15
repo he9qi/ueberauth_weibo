@@ -18,7 +18,7 @@
   2. Add `:ueberauth_weibo` to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:ueberauth_weibo, "~> 0.0.2"}]
+          [{:ueberauth_weibo, "~> 0.0.3"}]
         end
 
   3. Add the strategy to your application:

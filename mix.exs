@@ -15,7 +15,8 @@ defmodule UeberauthWeibo.Mixfile do
      homepage_url: "https://github.com/he9qi/ueberauth_weibo",
      description: description,
      deps: deps,
-     docs: docs]
+     docs: docs,
+     test_coverage: [tool: ExCoveralls]]
   end
 
   # Configuration for the OTP application
@@ -29,6 +30,7 @@ defmodule UeberauthWeibo.Mixfile do
      {:oauth2, "~> 0.5"},
 
      {:exvcr, "~> 0.7", only: :test},
+     {:excoveralls, "~> 0.3", only: :test},
 
      # docs dependencies
      {:earmark, "~>0.1", only: :dev},

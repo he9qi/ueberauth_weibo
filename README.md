@@ -1,6 +1,6 @@
 # Überauth Weibo
 
-[![Build Status][travis-img]][travis] [![Hex Version][hex-img]][hex] [![License][license-img]][license] [![Coverage Status][coverage-img]][coverage]
+[![Build Status][travis-img]][travis] [![Coverage Status][coverage-img]][coverage] [![Hex Version][hex-img]][hex] [![License][license-img]][license]
 
 [coverage-img]: https://coveralls.io/repos/he9qi/ueberauth_weibo/badge.svg?branch=master&service=github
 [coverage]: https://coveralls.io/github/he9qi/ueberauth_weibo?branch=master

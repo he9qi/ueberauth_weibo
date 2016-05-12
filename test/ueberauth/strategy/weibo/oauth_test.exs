@@ -15,4 +15,18 @@ defmodule Ueberauth.Strategy.Weibo.OAuthTest do
     assert client.token_url == "/oauth2/access_token"
     assert client.site == "https://api.weibo.com"
   end
+
+  test "get_access_token with error from new token" do
+    access_token = %OAuth2.AccessToken{access_token: "token"}
+    token = access_token |> get_access_token("", %{"error" => ""})
+    assert token.access_token == "token"
+  end
+
+  test "get_access_token with params in `other_params`", %{client: client} do
+    access_token = OAuth2.AccessToken.new(%{
+      "{\"access_token\":\"token\"}" => nil
+    }, client)
+    token = access_token |> get_access_token(nil, nil)
+    assert token.access_token == "token"
+  end
 end
